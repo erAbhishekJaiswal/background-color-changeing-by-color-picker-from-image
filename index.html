@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .box {
+            border: 2px solid red;
+            padding: 10px;
+            border-radius: 10px;
+            width: 500px;
+            height: 500px;
+        }
+        .btn{
+            margin: 5px;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="box">
+                <img src="https://images.pexels.com/photos/683483/pexels-photo-683483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="" width="500px" height="500px" class="img">
+            </div>
+            <button class="btn" onclick="changeColor()">Color Picker</button>
+        </div>
+    </div>
+    <script>
+
+        // **** Color Picker method 1 ****
+
+        // document.querySelector('button').addEventListener('click', async()=>{
+        //     const eyeDroper = new EyeDropper();
+        // const color =  await eyeDroper.open();
+        // console.log(color.sRGBHex);
+        // document.body.style.backgroundColor = color.sRGBHex;
+        // });
+
+
+        // **** Color Picker method 2 ****
+        // const btn = document.querySelector('button')
+        // btn.addEventListener('click', async()=>{
+        //     const eyeDroper = new EyeDropper();
+        //     const color =  await eyeDroper.open();
+        //     console.log(color);
+        //     document.body.style.backgroundColor = color.sRGBHex;
+        // })
+
+        // **** Color Picker method 3 ****
+        changeColor = () => {
+            const eyeDroper = new EyeDropper();
+            eyeDroper.open()
+                .then((result) => {
+                    document.body.style.backgroundColor = result.sRGBHex;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    </script>
+</body>
+
+</html>
